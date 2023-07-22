@@ -1,0 +1,13 @@
+cache
+eula.txt
+libraries
+logs
+ops.json
+usercache.json
+.bash_history
+version_history.json
+versions/
+paper-*.jar
+world
+world_the_end
+world_nether

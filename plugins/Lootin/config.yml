@@ -1,0 +1,58 @@
+# Thank you for downloading Lootin :)
+# If you find any bug/issue let me know on discord https://discord.com/invite/tTHs4jKu6f
+
+# Titles for chest interfaces
+gui-titles:
+  chest: '&6Chest'
+  double-chest: '&6Large Chest'
+  minecart: '&6Minecart with Chest'
+  barrel: '&6Barrel'
+
+ 
+# Its bstats 
+metrics: true
+
+messages:
+  prefix: '&e[&6戰利品&e] '
+  no-permission: '&c您沒有執行此指令的權限。'
+  chestbreak-with-permission: '&a打破箱子將刪除您的獨特戰利品和物品！為了打破箱子，&2您必須潛行進行。&a每個玩家每個箱子的戰利品都是獨立的，只有在真正需要的情況下才打破。'
+  chestbreak-without-permission: '&c您沒有權限打破戰利品箱子。'
+  chest-edited: '&c箱子正在被編輯，無法打破。'
+  reloaded: '&a配置檔已重新載入。'
+  cant-place-double-chest: '&c無法在戰利品箱附近放置普通箱子。'
+  elytra-itemframe-break-with-permission: '&c使用主手持有的棍子左鍵點擊以打破特殊滑翔翼物品展示架。'
+  elytra-itemframe-break-without-permission: '&c無法打破滑翔翼物品展示架！'
+  elytra-item-frame-removed: '&a已移除滑翔翼物品展示架。'
+
+# weather or not to delete items when player breaks loot chest successfully
+delete-items-on-break: true
+
+# weather or not to prevent lootin chest from being exploded by tnt or creeper
+prevent-explosions: true
+
+# Under Progress
+reset-seed-on-fill: true
+
+# list of worlds where lootin will not modify loot chests
+black-list-worlds: []
+
+# list of vanilla structures where lootin will not modify loot chests
+# valid structure names can be found here https://www.spigotmc.org/resources/90453/
+black-list-structures: []
+
+# Note: does not work with already looted end ships
+# if set to true, the elytra present in item frame in end city ships will be per player
+# these item frames are special and cant be broken, players with lootin.breakelytraitemframe.bypass permission and a stick in main hand can only break them
+per-player-elytra-item-frame: true
+
+
+# list of CustomStructures where lootin will not modify loot chests.
+# only applicable if CustomStructures is installed.
+black-list-customstructures: []
+
+# list of OhTheDungeon structure names where lootin will not modify loot chests.
+# only applicable if OhTheDungeon is installed.
+black-list-otd-structures: []
+
+# if set to false, if the loot chest block is claimed, player will not able to open lootin chest 
+bypass-grief-plugins: true

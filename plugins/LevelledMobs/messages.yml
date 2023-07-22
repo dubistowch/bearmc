@@ -1,0 +1,359 @@
+#                    _                   _ _          _ __  __       _
+#                   | |    _____   _____| | | ___  __| |  \/  | ___ | |__  ___
+#                   | |   / _ \ \ / / _ \ | |/ _ \/ _` | |\/| |/ _ \| '_ \/ __|
+#                   | |__|  __/\ V /  __/ | |  __/ (_| | |  | | (_) | |_) \__ \
+#                   |_____\___| \_/ \___|_|_|\___|\__,_|_|  |_|\___/|_.__/|___/
+#                             The Ultimate RPG Levelled Mobs Solution
+#
+# --------------------------------------------------------------------------------------------LM3
+# +                                      ++                                                  +LM3
+# +  Main Developers                     ++  Documentation (on our Wiki)                     +LM3
+# +    lokka30                           ++    https://github.com/lokka30/LevelledMobs/wiki  +LM3
+# +      Author and developer            ++                                                  +LM3
+# +      https://ko-fi.com/lokka30       ++  Support/Discussion (on our Discord)             +LM3
+# +                                      ++    Join our Discord for free, quality support.   +LM3
+# +    PenalBuffalo (aka. stumper66)     ++    If you are unable to, PM @lokka30 on SpigotMC +LM3
+# +      LevelledMobs 3 maintainer       ++    https://discord.gg/RQ8M4A5                    +LM3
+# +      https://ko-fi.com/penalbuffalo  ++                                                  +LM3
+# +                                      ++  Welcome to LevelledMobs 3! Please read the      +LM3
+# +    UltimaOath (aka. Oathkeeper)      ++  relevant documentation prior to attempting any  +LM3
+# +      Docs and configs since v2       ++  changes to this file.                           +LM3
+# +      https://ko-fi.com/ultimaoath    ++                                                  +LM3
+# +                                      ++                                                  +LM3
+# --------------------------------------------------------------------------------------------LM3
+#                               _____
+#                              |     |___ ___ ___ ___ ___ ___ ___
+#                              | | | | -_|_ -|_ -| .'| . | -_|_ -|
+#                              |_|_|_|___|___|___|__,|_  |___|___|
+#                                                    |___|
+#
+# +-------------------------------------------------------------------------------------------LM3
+# +                                                                                          +LM3
+# +   Section 01 - Common Messages                                                           +LM3
+# +                                                                                          +LM3
+# +-------------------------------------------------------------------------------------------LM3
+common:
+  prefix: '&b&l怪物等級:&7'
+  no-permission:
+    - '%prefix% 你沒有權限進行該操作。'
+  players-only:
+    - '%prefix% 僅有玩家可以進行該操作。'
+  player-offline:
+    - '%prefix% 玩家「&r%player%&7」目前不在線上。'
+  invalid-command:
+    - '%prefix% 無效的指令。'
+
+
+# +-------------------------------------------------------------------------------------------LM3
+# +                                                                                          +LM3
+# +   Section 02 - Default Command Messages                                                  +LM3
+# +                                                                                          +LM3
+# +-------------------------------------------------------------------------------------------LM3
+command:
+  levelledmobs:
+    main-usage:
+      - '%prefix% 可用指令:'
+      - '&8 &m->&b /%label% summon &8- &7召喚指定等級的怪物'
+      - '&8 &m->&b /%label% rules &8- &7顯示規則系統'
+      - '&8 &m->&b /%label% kill &8- &7批量消滅等級怪物'
+      - '&8 &m->&b /%label% reload &8- &7重新載入設定檔'
+      - '&8 &m->&b /%label% info &8- &7查看插件資訊'
+      - '&8 &m->&b /%label% compatibility &8- &7檢查插件與伺服器的相容性'
+
+
+    # +-------------------------------------------------------------------------------------------LM3
+    # +                                                                                          +LM3
+    # +   Section 03 - 召喚指令訊息                                                              +LM3
+    # +                                                                                          +LM3
+    # +-------------------------------------------------------------------------------------------LM3
+    summon:
+      invalid-amount:
+        - '%prefix% 數量無效：''&b%amount%&7''。'
+      invalid-entity-type:
+        - '%prefix% 生物類型無效：''&b%entityType%&7''。'
+      invalid-level:
+        - '%prefix% 等級無效：''&b%level%&7''。'
+      invalid-summon-type:
+        - '%prefix% 召喚類型無效：''&b%summonType%&7''。'
+      invalid-summon-type-console:
+        - '%prefix% 只有玩家可以使用召喚類型：''&bhere''&7，您必須使用''&batPlayer&7''或''&batLocation&7''。'
+      invalid-location:
+        - '%prefix% 座標無效。'
+      here:
+        usage:
+          - '%prefix% 使用方法：&b/%label% summon <數量> <生物> <等級> here'
+        success:
+          - '%prefix% 在您的位置召喚了 &b%amount%&7 隻 &f等級 Lvl.%level% 的 &b%entity%&7。'
+      atLocation:
+        usage:
+          - '%prefix% 使用方法：&b/%label% summon <數量> <生物> <等級> atLocation <x> <y> <z> [世界]'
+        success:
+          - '%prefix% 在 &8(&b%x%&7, &b%y%&7, &b%z%&7 於世界 &b%world%&8)&7 召喚了 &b%amount%&7 隻 &f等級 Lvl.%level% 的 &b%entity%&7。'
+        usage-console:
+          - '%prefix% 使用方法 (主機端)：&b/%label% summon <數量> <生物> <等級> atLocation <x> <y> <z> <世界>'
+        invalid-world:
+          - '%prefix% 世界無效：''&b%world%&7''。'
+        invalid-location:
+          - '%prefix% 座標無效。'
+      atPlayer:
+        usage:
+          - '%prefix% 使用方法：&b/%label% summon <數量> <生物類型> <等級> atPlayer <玩家名稱>'
+        success:
+          - '%prefix% 在 &r%targetDisplayname%&7 的位置召喚了 &b%amount%&7 隻 &f等級 Lvl.%level% 的 &b%entity%&7。'
+      usage:
+        - '%prefix% 召喚指令語法:'
+        - '&8 &m->&b /%label% summon <數量> <生物> <等級> here'
+        - '&8 &m->&b /%label% summon <數量> <生物> <等級> atPlayer <玩家名稱>'
+        - '&8 &m->&b /%label% summon <數量> <生物> <等級> atLocation <x> <y> <z> [世界]'
+      amount-limited:
+        min:
+          - '%prefix% 召喚數量限制最少為 &b1&7 隻怪物。'
+        max:
+          - '%prefix% 召喚數量限制最多為 &b%maxAmount%&7 隻怪物。'
+      level-limited:
+        min:
+          - '%prefix% 最低等級限制為 &bLvl.%minLevel%&7。'
+        max:
+          - '%prefix% 最高等級限制為 &bLvl.%maxLevel%&7。'
+      not-levellable:
+        - '%prefix% &b%entity%&7 無法提升等級。'
+
+
+    # +-------------------------------------------------------------------------------------------LM3
+    # +                                                                                          +LM3
+    # +   Section 04 - Kill Command Messages                                                     +LM3
+    # +                                                                                          +LM3
+    # +-------------------------------------------------------------------------------------------LM3
+    kill:
+      usage:
+        - '%prefix% 使用方法：&b/%label% kill <all/near>'
+      all:
+        invalid-world:
+          - '%prefix% 無效的世界：''&b%world%&7''。'
+        success:
+          - '%prefix% 消滅了 &b%killed%&7 隻等級怪物於 &b%worlds%&7 個世界 &8（有 &b%skipped%&7 隻怪物未受影響&8）&7。'
+        usage:
+          - '%prefix% 使用方法：&b/%label% kill all [world/*]'
+        usage-console:
+          - '%prefix% 使用方法（主機端）：/%label% kill all <world/*>'
+      near:
+        invalid-radius:
+          - '%prefix% 無效的範圍半徑：''&b%radius%&7''。'
+        invalid-radius-min:
+          - '%prefix% 指定的範圍半徑已調整為最小半徑 &8（&b%minRadius%&8）&7。'
+        invalid-radius-max:
+          - '%prefix% 指定的範圍半徑已調整為最大半徑 &8（&b%maxRadius%&8）&7。'
+        success:
+          - '%prefix% 消滅了 &b%killed%&7 隻等級怪物於半徑 &b%radius%&7 方塊內 &8（有 &b%skipped%&7 隻怪物未受影響&8）&7。'
+        usage:
+          - '%prefix% 使用方法：&b/%label% kill near <radius>'
+
+
+
+    # +-------------------------------------------------------------------------------------------LM3
+    # +                                                                                          +LM3
+    # +   Section 05 - Spawner Command Messages                                                  +LM3
+    # +                                                                                          +LM3
+    # +-------------------------------------------------------------------------------------------LM3
+    spawner:
+      usage:
+        - '%prefix% 生成器指令語法:'
+        - '&8 &m->&b /%label% spawner create'
+        - '&8 &m->&b /%label% spawner copy'
+        - '&8 &m->&b /%label% spawner info'
+        - ' '
+        - '&f範例語法:'
+        - '&8 &m->&b /%label% spawner create &3/minlevel&b 1 &3/maxlevel&b 10 &3/name&b "我的自訂 LM 生成器" &3/customDropId&b Id1'
+      no-value:
+        - '%prefix% 未指定鍵 ''&b%keyname%&7'' 的數值。'
+      no-player:
+        - '%prefix% 此指令只能由玩家執行，除非使用 &b/giveplayer&7 參數。'
+      invalid-value:
+        - '%prefix% &b%keyname%&7 的數值無效，必須為數字。'
+      no-level-specified:
+        - '%prefix% 您必須指定最小等級和/或最大等級。'
+      inventory-full:
+        - '%prefix% 您的背包已滿。'
+      spawner-give-message:
+        - '%prefix% 給予您一個 LM 生成器。'
+      spawner-give-message-console:
+        - '%prefix% 給予 &r%playername%&7 一個 LM 生成器。 &8|&7 最小等級: &b%minlevel%&7, 最大等級: &b%maxlevel%&7'
+      permission-denied:
+        - '%prefix% 您沒有權限更新或轉換 LM 生成器。'
+      spawner-converted:
+        - '%prefix% 已將原版生成器轉換為名稱為「%spawnername%」的 LM 生成器。'
+      spawner-updated:
+        - '%prefix% 從生成蛋更新了 LM 生成器。生成器名稱:「%spawnername%」'
+      info:
+        status-enabled:
+          - '%prefix% 生成器資訊已啟用。'
+        status-not-enabled:
+          - '%prefix% 生成器資訊未啟用。'
+        enabled:
+          - '%prefix% 生成器資訊已啟用。右鍵點擊任何生成器以查看詳細資訊！'
+        disabled:
+          - '%prefix% 生成器資訊已停用。'
+      copy:
+        vanilla-spawner:
+          - '%prefix% 生成器複製僅適用於 LM 生成器。'
+        status-enabled:
+          - '%prefix% 生成器複製已啟用。'
+        status-not-enabled:
+          - '%prefix% 生成器複製未啟用。'
+        enabled:
+          - '%prefix% 生成器複製已啟用。右鍵點擊 LM 生成器以進行複製。'
+          - '您的手必須是空的。'
+        disabled:
+          - '%prefix% 生成器複製已停用。'
+
+
+    # +-------------------------------------------------------------------------------------------LM3
+    # +                                                                                          +LM3
+    # +   Section 06 - Spawn Egg Command Messages                                                +LM3
+    # +                                                                                          +LM3
+    # +-------------------------------------------------------------------------------------------LM3
+    spawn_egg:
+      usage:
+        - '%prefix% 生成蛋指令語法:'
+        - '&8 &m->&b /%label% egg /minlevel <等級> /maxlevel <等級> /entity <生物類型>'
+        - '&7&o 範例生成蛋'
+        - '&7/%label% egg &b/minlevel&7 1 &b/maxlevel&7 10 &b/name&7 "我的自訂 LM 生成蛋" &b/customDropId&7 Id1'
+      no-paper:
+        - '%prefix% 此功能僅在運行 Paper 或 Paper 衍生版本的伺服器上可用。'
+      no-value:
+        - '%prefix% 未為 &b%keyname%&7 指定數值。'
+      no-player:
+        - '%prefix% 此指令只能由玩家執行，除非指定 /giveplayer。'
+      no-player-specified:
+        - '%prefix% 未指定玩家。'
+      invalid-value:
+        - '%prefix% &b%keyname%&7 的數值無效，必須為數字。'
+      no-level-specified:
+        - '%prefix% 您必須指定最小等級、最大等級和生物類型。'
+      inventory-full:
+        - '%prefix% &4您的背包已滿！'
+      give-message:
+        - '%prefix% 給予您一個 LM 生成蛋。'
+      give-message-console:
+        - '%prefix% 給予 &r%playername%&7 一個 LM 生成蛋。 &8|&7 最小等級: &b%minlevel%&7, 最大等級: &b%maxlevel%&7, 生物類型: &b%entitytype%&7'
+
+
+    # +-------------------------------------------------------------------------------------------LM3
+    # +                                                                                          +LM3
+    # +   Section 07 - Rules Command Messages                                                    +LM3
+    # +                                                                                          +LM3
+    # +-------------------------------------------------------------------------------------------LM3
+    rules:
+      incomplete-command:
+        - '%prefix% 指令不完整。'
+      console-rules:
+        - '%prefix% 規則已在主機端列印。'
+      discord-invite:
+        - '%prefix% 點擊加入 Discord。'
+      wiki-link:
+        - '%prefix% 點擊打開 Wiki。'
+      rules-reprocessed:
+        - '%prefix% 規則已重新處理，共涉及 &b%entitycount%&7 個生物，於 &b%worldcount%&7 個世界。'
+      reset:
+        - '%prefix% 執行此指令將重置您的規則為四種預設難度之一。'
+        - '您必須選擇基本/普通/進階/極限難度。'
+        - '將進行備份，並將您的 rules.yml 重置為預設。'
+      resetting:
+        - '%prefix% 正在將規則重置為 %difficulty% 難度。'
+      reset-syntax:
+        - '%prefix% 要將您的規則重置為 %difficulty% 難度，請輸入以下指令：'
+        - '%label% rules reset %difficulty% confirm'
+      reset-complete:
+        - '%prefix% rules.yml 成功更新。'
+      invalid-difficulty:
+        - '%prefix% 難度無效：%difficulty%'
+      rule-name-missing:
+        - '%prefix% 必須指定規則名稱。'
+      rule-name-invalid:
+        - '%prefix% 未找到名稱為 %rulename% 的規則。'
+      showing-rules:
+        - '顯示規則名稱：&b%rulename%&r 所有數值'
+      no-entities-visible:
+        - '%prefix% 必須在附近看著一個生物。'
+      no-entities-near:
+        - '%prefix% 在 10 個方塊半徑內找不到任何生物。'
+      effective-rules:
+        - '%prefix% 顯示 %world%，%location% 中 %entitytype% (等級 %level% %mobname%) 的生效規則。'
+      no-effective-rules:
+        - '%prefix% 找不到生效規則。'
+
+    # +-------------------------------------------------------------------------------------------LM3
+    # +                                                                                          +LM3
+    # +   Section 08 - System Command Messages                                                   +LM3
+    # +                                                                                          +LM3
+    # +-------------------------------------------------------------------------------------------LM3
+    reload:
+      started:
+        - '%prefix% 正在重新載入設定檔...'
+      finished:
+        - '%prefix% 載入完成。'
+      usage:
+        - '%prefix% 使用方法：&b/%label% reload'
+    info:
+      about:
+        - ' '
+        - '&b&lLevelledMobs&b v%version%'
+        - '&7&o%description%'
+        - ' '
+        - '&7維護者：&f%maintainers%'
+        - '&7貢獻者：&f%contributors%'
+        - '&7支援版本：&fMC &f%supportedVersions%'
+        - ' '
+      listSeparator: '&7, &f'
+      usage:
+        - '%prefix% 使用方法：&b/%label% info'
+    compatibility:
+      notice:
+        - '%prefix% 相容性檢查結果已列印至主機端，請檢查主機端。'
+      usage:
+        - '%prefix% 使用方法：&b/%label% compatibility'
+
+# +-------------------------------------------------------------------------------------------LM3
+# +                                                                                          +LM3
+# +   Section 09 - Other Messages                                                            +LM3
+# +                                                                                          +LM3
+# +-------------------------------------------------------------------------------------------LM3
+other:
+  compatibility-notice:
+    enabled: true
+    messages:
+      - '%prefix% LevelledMobs 相容性通知：'
+      - '&8 &m->&r &b發現 %incompatibilities% &7可能的相容性問題。請執行 &b/levelledmobs compatibility&7 來檢查它們。'
+      - '&8 &m->&7 您收到此訊息是因為您擁有權限 &blevelledmobs.compatibility-notice&7。您可以在 &bmessages.yml&7 中停用此訊息。'
+      - '&8 &m->&7 請確保您已遵從插件 Wiki 頁面上的所有指示。'
+  update-notice:
+    messages:
+      - '&b&nLevelledMobs 更新檢查通知：'
+      - '&7您的 &bLevelledMobs&7 版本已經 &b過期&7！請盡快升級到 &bv%latestVersion%&7。 &8（&7您正在運行 &bv%currentVersion%&8）'
+    send-in-console: true
+    send-on-join: true
+
+  mob-head-drop-name: '%mob_name% 的頭顱'
+  no-drop-in-chunk: '%prefix% &7您的等級怪物殺敵數已達到此區塊的上限。您將不再從這些怪物獲得等級掉落物品。請稍後回來。'
+  create-debug:
+    - '&b&n建立除錯 ZIP'
+    - '&7只有在 LevelledMobs 開發人員要求時才應運行此指令。它用於幫助遇到插件問題的用戶。'
+    - ''
+    - '&7此指令將生成包含以下必要資料的 ZIP 檔案：'
+    - '&8 &m->&b 插件清單'
+    - '&8 &m->&b 伺服器版本'
+    - '&8 &m->&b 當前和最大在線玩家數量'
+    - '&8 &m->&b latest.log 檔案&7 &8(/logs/latest.log)'
+    - ''
+    - '&7LevelledMobs 開發人員不會在解決您可能遇到的任何問題後重新分發或保留這些資料。您也可以在發送檔案之前進行驗證。'
+    - '&7要繼續建立 ZIP 檔案，請執行：'
+    - '&b/lm debug create confirm&7'
+
+
+# +-------------------------------------------------------------------------------------------LM3
+# +                                                                                          +LM3
+# +   Section 10 - Advanced Message Settings                                                 +LM3
+# +   DO NOT EDIT BEYOND HERE WITHOUT DEVELOPER APPROVAL                                     +LM3
+# +                                                                                          +LM3
+# +-------------------------------------------------------------------------------------------LM3
+file-version: 8
